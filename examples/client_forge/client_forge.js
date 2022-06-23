@@ -17,7 +17,8 @@ var password = process.argv[5];
     host: host,
     port: port,
     username: username,
-    password: password
+    password: password,
+    auth: 'microsoft'
   });
   autoVersionForge(client);
   //forgeHandshake(client, {forgeMods});
@@ -39,3 +40,5 @@ var password = process.argv[5];
   client.on('forgeMods', function(mods) {
     console.log('Received forgeMods event:',mods);
   });
+
+  client.on('error', err => console.error(err));
