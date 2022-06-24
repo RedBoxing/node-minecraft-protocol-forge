@@ -484,6 +484,7 @@ function fml2HandshakeStep(client, messageId, data, options) {
 
   switch(handshakeData.data.discriminator) {
     case "mod_list":
+      client.emit('forgeMods', handshakeData.data.mods);
       responseData = {
         discriminator: "mod_list_reply",
         mods: options.autoMods ? handshakeData.data.mods : options.forgeMods || [],
